@@ -1,0 +1,247 @@
+<!-- <div class="main-page">
+  
+<nav>
+<h1 class>To-Do List</h1>
+<div class="form-group" id="dropdown">
+        <label></label>
+        <select class="form-control-lg ">
+                <option id="prior" value="select">--Select--</option>
+                <option id="prior" value="High">High</option>
+                <option id="prior" value="Medium">Medium</option>
+                <option id="prior" value="Low">Low</option>    
+        </select>
+    </div></nav>
+<section id="div1" class="container">
+        <div class="row">
+                <div class="col-md-2  bg-light text-center">
+                  Task-Name
+                </div>
+                <div class="col-md-2  bg-light text-center">
+                    categary
+                    </div>
+                <div class="col-md-2  bg-light text-center">
+                  Priority
+                </div>
+                <div class="col-md-2  bg-light text-center">
+                  Time
+                </div >
+                <div class="col-md-4  bg-light text-center">
+                        Clear
+                  </div >
+        </div>
+
+
+<div  class="container"  *ngFor="let item of userInput |async | filterpipe:edit3" >
+    <div class="row">
+      <div class="col-md-2 rounded bg-primary text-center">
+        {{item.userTask}}
+      </div>
+      <div class="col-md-2 rounded bg-danger text-center">
+            {{item.categary}}
+          </div>
+      <div class="col-md-2 round
+      ed bg-success text-center">
+        {{item.priority}}
+      </div>
+      <div class="col-md-2 rounded bg-info text-center">
+        {{item.userTime}}
+      </div>
+      <button class="btn btn-primary m-3" (click)="editInfo(item); displayEdit();  ">Edit</button>
+      <button class="btn btn-danger m-3" (click)=delInfo(item)>Delete</button>
+    </div>
+  </div>
+</section>
+
+
+<div id="users" class="container mt-3">
+    <div class="form-group">
+      <input type="text" #userTask placeholder="Enter the Work to do" [(ngModel)]="edit1" class="form-control form-control-lg">
+    </div>
+    <div class="form-group">
+      <input type="text" #categary placeholder="Enter Categary " [(ngModel)]="edit2" class="form-control form-control-lg" >
+    </div>
+    <div class="form-group">
+            <label></label>
+            <select #priority class="form-control" [(ngModel)]="edit3" >
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+               
+            </select>
+        </div>
+   
+    <div class="form-group">
+            <input type="text" #userTime placeholder=" Enter Time " [(ngModel)]="edit4" class="form-control form-control-lg" >
+          </div>
+    <button class="btn btn-success btn-lg" (click)="todoAddCourse(userTask,categary,priority,userTime)">Add Course</button>
+    <button class="btn btn-success btn-lg mx-2" (click)="updateInfo(userTask.value,categary.value,priority.value,userTime.value)">Update Course</button>
+  </div>
+  
+  
+  
+  <div id="div2" class="container-fluid" style="width: 100%; height: 80vh; visibility:hidden; margin-top: -100vh; ">
+    <div class="form-group">
+      <input type="text" #userTask placeholder="Enter the Work to do" [(ngModel)]="edit1" class="form-control form-control-lg">
+    </div>
+    <div class="form-group">
+      <input type="text" #categary placeholder="Enter Categary " [(ngModel)]="edit2" class="form-control form-control-lg" >
+    </div>
+    <div class="form-group">
+            <label></label>
+            <select #priority class="form-control" [(ngModel)]="edit3" >
+                <option>High</option>
+                <option>Medium</option>
+                <op/tion>Low</option>
+               
+            </select>
+        </div>
+  </div>
+  
+</div>
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+ </head>
+ <body>
+   
+    <div id="div1" class="div1">
+      <div id="div1-1">
+        <nav class="navbar navbar-expand-lg  navbar-light bg-dark">
+                <a class="navbar-brand ml-3"><img src="../../assets/todolist_logo.png" width="33" height="33" alt=""><span class="ml-2" style="color:orange;font-size:1.2rem;">To-Do</span></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-menu" aria-controls="my-menu" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+            
+                        <div class="collapse navbar-collapse" id="my-menu">
+                                <ul class="navbar-nav">
+                            <li>
+                
+                        <div class="form-group mr-3 mt-2 " id="my-menu" style="font-size:0.6rem;" >
+                                
+                                <select style=" height:35px;"  class="form-control-lg small pt-0" [(ngModel)]="filterer" > 
+                                        <option id="prior" value="select">-Select-</option>
+                                        <option id="prior" value="High">Higher</option>
+                                        <option id="prior" value="Medium">Medium</option>
+                                        <option id="prior" value="Low">Low</option>    
+                                </select>
+                            </div></li>
+                <li>  <input id="my-menu" style="height:2rem"  class="form-control mr-sm-2 mt-2" type="search" placeholder="Search" aria-label="Search"[(ngModel)]="userInput1" ></li>
+                <li id="addTask" class="mt-2 "><button class="btn" (click)="displayAdd()"> AddTask+ </button></li>
+                 </ul></div>
+              </nav>
+
+<div class="section2">
+  <div id="div1-3" class="container">
+  
+        <div  class="container mt-3"  *ngFor="let item of userInput | async | filterpipe:filterer | search1:userInput1" style="width:100%;height: auto; background-color: rgb(255, 255, 255); border-radius: 10px;padding: 2%; color: blue; font-weight: bold;" >
+            
+              <div class="row">
+                <div class="col-10">
+                Task : {{item.userTask}}<br>
+                Priority : {{item.priority}} <br>
+                {{item.userTime}}<br>
+               <span style="color:gray"> {{item.categary}}</span>
+              </div>
+              <div class="col-2">
+                  <img  class="mx-2" (click)="editInfo(item);displayEdit()" src="../../assets/box_edit-512.png" alt="" width="25" height="25">
+                  <img class="ml-1" (click)=delInfo(item) src="../../assets/delete-sign.png" alt="" width="25" height="25">
+              </div>
+              </div>
+           
+              
+            </div><hr style="background-color:rgb(255, 38, 0)">
+          </div>
+</div></div>
+
+<!-- hidden division -->
+<div id="cont2" style="visibility:hidden">
+    <div class="sec1 container" id="secOne" >
+        <div id="div1-2">
+          <div class="row">
+              <div class="form-group col-10 mt-4 ml-3">
+                  <label for="email" class="d-none d-md-inline-block">Task Name</label>
+                      <input type="text" placeholder="Enter Task" #userTask [(ngModel)]="edit1" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group col-10 mt-2 ml-3">
+                        <label for="email" class="d-none d-md-inline-block">Categary</label>
+                      <input type="text" placeholder="Enter Categary " #categary [(ngModel)]="edit2" class="form-control form-control-lg" >
+                    </div>
+          </div>
+          <div class="row">
+              
+                    <div id="dropd" class="form-group col-10 mr-3 ml-3">
+                        <label for="email" class="d-none d-md-inline-block">Priority</label>
+                            <select class="form-control" #priority [(ngModel)]="edit3" >
+                                <option>Higher</option>
+                                <option>Medium</option>
+                                <option>Low</option>
+                               
+                            </select>
+                        </div>
+                    <!-- <div class="form-group">
+                      <input type="text" #priority placeholder=" Enter Priority " [(ngModel)]="edit3" class="form-control form-control-lg" >
+                    </div> -->
+                    <div class="form-group col-10 ml-3 mt-3">
+                        <label for="email" class="d-none d-md-inline-block">Due Date</label>
+                            <input type="date" placeholder=" " #userTime [(ngModel)]="edit4" class="form-control form-control-lg" >
+                          </div>
+                      </div>                          
+                    <button id="addBtn"  class="btn btn-info btn-md mt-4 ml-3" (click)="updateInfo()">Update Task</button>
+                    <button id="addBtn"  class="btn btn-danger btn-md mt-4 ml-3" (click)="closeWindow()">Cancel</button>
+                  </div>
+      </div>
+      
+
+</div>
+
+
+
+    
+
+</div>
+<!------------- Hidden Division two ----------->
+<div id="cont1" style="visibility:hidden;">
+<div class="sec1 container" id="secOne" >
+  <div id="div1-2">
+    <div class="row">
+        <div class="form-group col-10 mt-4 ml-3">
+            <label for="email" class="d-none d-md-inline-block">Task Name</label>
+                <input type="text" placeholder="Enter Task" [(ngModel)]="edit1" class="form-control form-control-lg">
+              </div>
+              <div class="form-group col-10 mt-2 ml-3">
+                  <label for="email" class="d-none d-md-inline-block">Categary</label>
+                <input type="text" placeholder="Enter Categary " [(ngModel)]="edit2" class="form-control form-control-lg" >
+              </div>
+    </div>
+    <div class="row">
+        
+              <div id="dropd" class="form-group col-10 mr-3 ml-3">
+                  <label for="email" class="d-none d-md-inline-block">Priority</label>
+                      <select class="form-control" [(ngModel)]="edit3" >
+                          <option>Higher</option>
+                          <option>Medium</option>
+                          <option>Low</option>
+                         
+                      </select>
+                  </div>
+              <!-- <div class="form-group">
+                <input type="text" #priority placeholder=" Enter Priority " [(ngModel)]="edit3" class="form-control form-control-lg" >
+              </div> -->
+              <div class="form-group col-10 ml-3 mt-3">
+                  <label for="email" class="d-none d-md-inline-block">Due Date</label>
+                      <input type="date" placeholder=" " [(ngModel)]="edit4" class="form-control form-control-lg" >
+              </div>
+            </div>                          
+              <button id="addBtn"  class="btn btn-info btn-md mt-4 ml-3" (click)="todoAddCourse()">Add Task</button>
+              <button id="addBtn"  class="btn btn-danger btn-md mt-4 ml-3" (click)="closeWindow()">Cancel</button>
+        </div>
+</div>
+</div>
+ </body>
+ </html>

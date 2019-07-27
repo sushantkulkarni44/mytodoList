@@ -1,0 +1,35 @@
+<div class="sec1 container" id="secOne" >
+  <div id="div1-2">
+    <div class="row">
+        <div class="form-group col-10 mt-4 ml-3">
+            <label for="email" class="d-none d-md-inline-block">Task Name</label>
+                <input type="text" placeholder="Enter Task" [(ngModel)]="edit1" class="form-control form-control-lg">
+              </div>
+              <div class="form-group col-10 mt-2 ml-3">
+                  <label for="email" class="d-none d-md-inline-block">Categary</label>
+                <input type="text" placeholder="Enter Categary " [(ngModel)]="edit2" class="form-control form-control-lg" >
+              </div>
+    </div>
+    <div class="row">
+        
+              <div id="dropd" class="form-group col-10 mr-3 ml-3">
+                  <label for="email" class="d-none d-md-inline-block">Priority</label>
+                      <select class="form-control" [(ngModel)]="edit3" >
+                          <option>Higher</option>
+                          <option>Medium</option>
+                          <option>Low</option>
+                         
+                      </select>
+                  </div>
+              <!-- <div class="form-group">
+                <input type="text" #priority placeholder=" Enter Priority " [(ngModel)]="edit3" class="form-control form-control-lg" >
+              </div> -->
+              <div class="form-group col-10 ml-3 mt-3">
+                  <label for="email" class="d-none d-md-inline-block">Due Date</label>
+                      <input type="date" placeholder=" " [(ngModel)]="edit4" class="form-control form-control-lg" >
+                    </div>
+                </div>                          
+              <button id="addBtn" routerLink="/" class="btn btn-info btn-md mt-4 ml-3" (click)="todoAddCourse()">Add Task</button>
+              <button id="addBtn" routerLink="/" class="btn btn-danger btn-md mt-4 ml-3">Cancel</button>
+            </div>
+</div>
